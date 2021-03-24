@@ -9,17 +9,26 @@ use Symfony\Component\Routing\Annotation\Route;
 class PersonnageController extends AbstractController
 {
     /**
-     * @Route("/", name="personnage")
+     * @Route("/", name="homepage")
      */
     public function index(): Response
     {
         return $this->render('personnage/index.html.twig');
     }
     /**
-     * @Route("/personnage", name="personnage")
+     * @Route("/personnages", name="personnages")
      */
     public function personnage(): Response
     {
-        return $this->render('personnage/personnages.html.twig');
+        return $this->render('personnage/personnages.html.twig', [
+            "pseudo" => "Toto",
+            "age" => 25,
+            "carac" => [
+                "force" => 3,
+                "agi" => 2,
+                "intel" => 3
+            ]
+
+        ]);
     }
 }
